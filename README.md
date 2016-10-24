@@ -1,2 +1,2 @@
 # DomoticzOficina
-Instalación dómotica de la oficina mediante Domoticz y Mysensors
+Office domotics with Domoticz and Mysensors
