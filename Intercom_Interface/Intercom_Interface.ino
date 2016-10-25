@@ -10,20 +10,22 @@
  * 09/01/2016 V1.1 Daniel Alvarez
  * 23/02/2016 V1.2 Daniel Alvarez
  * 25/02/2016 V1.3 Daniel Alvarez
+ * 25/10/2016 v1.4 Daniel Alvarez
+ * English translation
   */
 
 #include <MySensor.h>  
 #include <SPI.h>
 
-#define DEBUG 0
+#define DEBUG 0 // 1 to send serial debug messages
 #define REPEATER 0 // This node can work as a signal repeater
 
-#define BELL_SENSOR_PIN 3   // Entrada digital para el sensor (Solo 2 y 3 generan interrupciones)
+#define BELL_SENSOR_PIN 3   // (only 2 and 3 generate interruptios)
 //#define INTERRUPT BELL_SENSOR_PIN-2 // Normalmente la interrupcion es pin-2 (en nano)
-#define BELL_SENSOR_CHILD_ID 1   // Id hijo del sensor de movimiento
-#define DOOR_RELAY_PIN 4   // Entrada digital para el sensor (Solo 2 y 3 generan interrupciones)
-#define DOOR_RELAY_CHILD_ID 2   // Id hijo del sensor de movimiento
-#define RELAY_ON 0  // Some relays are activated with a 0, others with 1
+#define BELL_SENSOR_CHILD_ID 1
+#define DOOR_RELAY_PIN 4
+#define DOOR_RELAY_CHILD_ID 2
+#define RELAY_ON 0  // Some relay modules are activated with a 0, others with 1
 #define RELAY_OFF 1
 #define RELAY_TIME 3000 // How long the open door signal will be (in miliseconds)
 
@@ -43,7 +45,7 @@ void setup()
   gw.begin(incomingMessage, AUTO, REPEATER);
 
   // Send the Sketch Version Information to the Gateway
-  gw.sendSketchInfo("Intercom interface", "1.3");
+  gw.sendSketchInfo("Intercom interface", "1.4");
 
   pinMode(BELL_SENSOR_PIN, INPUT);
   //digitalWrite(MOTION_INPUT_SENSOR,HIGH); //activa pullips (normalmente no necesario)
