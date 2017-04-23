@@ -36,7 +36,7 @@ const long interval = 2000;                  // Wait this long until reading aga
 
 void handle_root() {
   //server.send(200, "text/html", "<H1>WeMos DHT Server</H1><P>Get /temp  /humidity or /temphumi</P>");
-  server.send(200, "text/html", "<H1>WeMos DHT Server</H1><P>Get <a href=\"/temp\">/temp</a> <a href=\"/humidity\">/humidity</a>  or /temphumi</P>");
+  server.send(200, "text/html", "<H1>WeMos DHT Server</H1><P>Get <a href=\"/temp\">/temp</a> <a href=\"/humidity\">/humidity</a>  or /API</P>");
   delay(100);
 }
 
@@ -122,7 +122,7 @@ void setup(void)
     server.send(200, "text/plain", response);
   });
 
-  server.on("/temphumi", [](){
+  server.on("/API", [](){
     read_sensor();
     char response[70];
     char str_status[6];
