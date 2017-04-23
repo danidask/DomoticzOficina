@@ -65,8 +65,8 @@ void read_sensor() {
     }
 
     // Convert the floats to strings and round to 2 decimal places
-    dtostrf(humidity, 1, 2, str_humidity);
-    dtostrf(temperature, 1, 2, str_temperature);
+    dtostrf(humidity, 1, 0, str_humidity);
+    dtostrf(temperature, 1, 1, str_temperature);
 
     Serial.print("Humidity: ");
     Serial.print(str_humidity);
