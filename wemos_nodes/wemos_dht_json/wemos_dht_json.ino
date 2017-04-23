@@ -91,9 +91,9 @@ void setup(void)
   Serial.print("Connecting");
 
   // Wait for successful connection
-  while (WiFi.status() != WL_CONNECTED) {
+  while (WiFi.status() != WL_CONNECTED) { 
     delay(500);
-    Serial.print(".");
+    //Serial.print("."); // Can't be used at the same time that the blue LED
   }
   Serial.println("");
   Serial.print("Connected to: ");
@@ -111,15 +111,15 @@ void setup(void)
   server.on("/temp", [](){
     read_sensor();
     char response[50];
-    snprintf(response, 50, "Temperature: %s °C", str_temperature);
-    server.send(200, "text/plain", response);
+    snprintf(response, 50, "<B>Temperature: %s &deg;C</B>", str_temperature);
+    server.send(200, "text/html", response);
   });
 
   server.on("/humidity", [](){
     read_sensor();
     char response[50];
-    snprintf(response, 50, "Humidity: %s \%", str_humidity);
-    server.send(200, "text/plain", response);
+    snprintf(response, 50, "<B>Humidity: %s &#37;</B>", str_humidity); // 37 = %
+    server.send(200, "text/html", response);
   });
 
   server.on("/API", [](){
